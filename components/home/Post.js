@@ -10,9 +10,9 @@ const Post = () => {
                     alt="post_img"
                     objectFit="cover"
                 />
-                <div class="absolute top-3 right-3 px-2.5 pb-2.5 pt-1 inline-block bg-white rounded-b-2xl border-t-4 border-dolphin">
-                    <p class="text-lg font-bold">22</p>
-                    <p class="text-xs uppercase text-gray-500">Feb</p>
+                <div className="absolute top-3 right-3 px-2.5 pb-2.5 pt-1 inline-block bg-white rounded-b-2xl border-t-4 border-dolphin">
+                    <p className="text-lg font-bold">22</p>
+                    <p className="text-xs uppercase text-gray-500">Feb</p>
                 </div>
             </div>
             <div className="space-y-2.5 border-b-2 border-x-2">
