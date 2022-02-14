@@ -17,7 +17,7 @@ const Post = () => {
             </div>
             <div className="space-y-2.5 border-b-2 border-x-2">
                 <div className="ml-2">
-                    <span className="mx-2 py-0.5 px-0.5 border-b-2 border-dolphin">Lorem</span>
+                    <span className="mx-2 py-0.5 px-0.5 border-b-2 border-fun">Lorem</span>
                 </div>
                 <div className="space-y-2 pl-2.5 pr-4">
                     <h2 className="text-xl text-center font-semibold tracking-wide">Is Remote Work working?</h2>

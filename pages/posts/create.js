@@ -5,7 +5,7 @@ const CreatePost = () => {
     return (
         <Layout>
             <div className="h-screen bg-red-900">
-                Create post page
+                Crea il tuo post
             </div>
         </Layout>
     )

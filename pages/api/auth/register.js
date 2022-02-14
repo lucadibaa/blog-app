@@ -27,12 +27,12 @@ const register = async (req, res) => {
 
         const hashedPsw = password.length > 5 ? await bcrypt.hash(password, 10) : password
 
-        const access_token = createAccessToken({ id: user._id, role: user._doc.role })
-        const refresh_token = createRefreshToken({ id: user._id, role: user._doc.role })
-
         const newUser = new User({ firstName, lastName, email, password: hashedPsw })
 
         const savedUser = await newUser.save()
+
+        const access_token = createAccessToken({ id: newUser._id, role: newUser.role })
+        const refresh_token = createRefreshToken({ id: newUser._id, role: newUser.role })
 
         const { password: saved_password, __v, createdAt, updatedAt, ...others } = savedUser._doc
 

@@ -16,7 +16,7 @@ const Login = () => {
 
     useEffect(() => {
         if (Object.keys(user).length > 0) router.replace('/')
-    }, [user])
+    }, [user, router])
 
     const { email, password } = userData
 
@@ -49,7 +49,7 @@ const Login = () => {
                         {errors?.password && <p className="absolute text-sm text-red-600">{errors?.password}</p>}
                     </div>
                     <button type="submit" className="text-white bg-dolphin hover:bg-marine font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition">Login</button>
-                    <p className="mt-2 text-sm text-gray-500">Not registered yet ? <Link href="/register"><span className="font-medium text-blue-600 hover:underline cursor-pointer">Register Now</span></Link>.</p>
+                    <p className="mt-2 text-sm text-gray-500">Not registered yet ? <Link href="/register" passHref><span className="font-medium text-blue-600 hover:underline cursor-pointer">Register Now</span></Link>.</p>
                 </form>
             </main>
         </Layout>

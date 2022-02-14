@@ -9,8 +9,11 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         'snow': '#fcfcfc',
-        'azure': '#79BBE0',
-        'marine': "#0B3147",
+        'mosque': '#025959',
+        'marine': "#012340",
+        'fun': '#027333',
+        'pigment': '#03A63C',
+        'pastel': '#04D939',
         'dolphin': '#186694'
       },
     },

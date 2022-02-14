@@ -11,7 +11,7 @@ const BottomNavigation = () => {
 
     const isActive = route => {
         if (route === router.pathname) {
-            return 'bg-azure'
+            return 'bg-snow'
         } else {
             return ''
         }
@@ -38,11 +38,11 @@ const BottomNavigation = () => {
 
     return (
         <div /* className="sm:hidden"*/>
-            <div className="w-11/12 max-w-sm left-0 right-0 mx-auto h-12 fixed bottom-4 z-50 bg-dolphin rounded-full shadow flex items-center">
+            <div className="w-11/12 max-w-sm left-0 right-0 mx-auto h-12 fixed bottom-4 z-50 bg-pigment rounded-full shadow flex items-center">
                 <ul className="flex justify-evenly items-center w-full h-full">
                     {
                         tabs.map(t => (
-                            <Link key={t.title} href={`/${t.title.toLowerCase()}`}>
+                            <Link key={t.title} href={`/${t.title.toLowerCase()}`} passHref>
                                 <li className={`flex items-center justify-center px-4 py-1.5 rounded-full cursor-pointer ${isActive(`/${t.title.toLowerCase()}`)}`}                                >
                                     <span className="h-6 w-6 text-marine">
                                         {t.icon}
