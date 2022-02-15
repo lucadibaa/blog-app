@@ -33,7 +33,7 @@ const Posts = ({ posts }) => {
                 <section className="flex flex-wrap gap-5">
                     {
                         posts?.map(p => (
-                            <Post key={p._id} createdAt={p.createdAt} title={p.title} category={p.category} description={p.description} image={p.image} />
+                            <Post key={p._id} slug={p.slug} createdAt={p.createdAt} title={p.title} category={p.category} description={p.description} image={p.image} />
                         ))
                     }
                 </section>
