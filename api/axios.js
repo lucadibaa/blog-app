@@ -1,30 +1,10 @@
 import axios from 'axios'
 
-export const isLocalhost = typeof window !== 'undefined' ? Boolean(
-    window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.1/8 is considered localhost for IPv4.
-    window.location.hostname.match(
-        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
-) : false
-
-const token = 'abc'
-
-const defaultReq = axios.create({
-    baseURL: isLocalhost ? "http://localhost:3000/api" : "https://blog-temp-link.vercel.app/api",
+const api = axios.create({
+    baseURL: process.env.NODE_ENV === 'development' ? "http://localhost:3000/api" : "https://blog-temp-link.vercel.app/api",
     headers: {
         'Content-Type': 'application/json'
     }
 })
 
-const userReq = axios.create({
-    baseURL: isLocalhost ? "http://localhost:3000/api" : "https://blog-temp-link.vercel.app/api",
-    headers: {
-        'Authorization': token ? `Bearer ${token}` : '',
-        'Content-Type': 'application/json'
-    }
-})
-
-export { defaultReq, userReq }
+export default api

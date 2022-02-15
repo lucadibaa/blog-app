@@ -14,7 +14,9 @@ module.exports = {
         'fun': '#027333',
         'pigment': '#03A63C',
         'pastel': '#04D939',
-        'dolphin': '#186694'
+        'dolphin': '#186694',
+        'error': '#D43616',
+        'error-light': '#EA5234',
       },
     },
   },

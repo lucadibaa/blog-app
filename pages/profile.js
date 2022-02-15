@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -17,6 +18,10 @@ const Profile = () => {
 
     return (
         <Layout>
+            <Head>
+                <title>Your Profile</title>
+            </Head>
+
             <main className="text-white w-screen h-screen pt-5 bg-fun/20 space-y-28">
 
                 <div className="flex items-center justify-between px-5">

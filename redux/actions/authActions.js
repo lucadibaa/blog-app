@@ -1,4 +1,4 @@
-import { defaultReq } from "../../api/axios"
+import api from "../../api/axios"
 import requests from "../../api/requests"
 import { authTypes } from "../constants/types"
 import Cookie from "js-cookie"
@@ -9,7 +9,7 @@ export const register = userData => {
         dispatch({ type: authTypes.REGISTER_REQUEST })
 
         try {
-            const res = await defaultReq.post(requests.register, userData)
+            const res = await api.post(requests.register, userData)
             if (res.status === 201) {
                 const data = res.data
 
@@ -42,7 +42,7 @@ export const login = userData => {
         dispatch({ type: authTypes.LOGIN_REQUEST })
 
         try {
-            const res = await defaultReq.post(requests.login, userData)
+            const res = await api.post(requests.login, userData)
             if (res.status === 201) {
                 const data = res.data
 
@@ -54,6 +54,11 @@ export const login = userData => {
                 Cookie.set('refresh_token', data.refresh_token, {
                     path: 'api/auth/accessToken',
                     expires: 7
+                })
+
+                Cookie.set('access_token', data.access_token, {
+                    path: 'api/auth/accessToken',
+                    expires: 1
                 })
 
                 localStorage.setItem('isLoggedIn', true)
@@ -76,7 +81,7 @@ export const isTokenValid = () => {
 
         if (isLoggedIn) {
             try {
-                const res = await defaultReq.get(requests.getToken)
+                const res = await api.get(requests.getToken)
                 if (res.status === 201) {
                     const data = res.data
 
@@ -84,9 +89,16 @@ export const isTokenValid = () => {
                         type: authTypes.LOGIN_SUCCESS,
                         payload: { ...data.user, access_token: data.access_token }
                     })
+
+                    Cookie.set('access_token', data.access_token, {
+                        path: 'api/auth/accessToken',
+                        expires: 1
+                    })
                 }
             } catch (err) {
                 console.log(err)
+                Cookie.remove('refresh_token', { path: 'api/auth/accessToken' })
+                dispatch({ type: 'LOGOUT' })
                 return localStorage.removeItem('isLoggedIn')
             }
         }

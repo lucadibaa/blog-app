@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { defaultReq } from "../../api/axios"
+import api from "../../api/axios"
 import requests from "../../api/requests"
 
 const requireAuth = (WrappedComponent, requireAdmin) => {
@@ -14,7 +14,7 @@ const requireAuth = (WrappedComponent, requireAdmin) => {
 
             if (isLoggedIn) {
                 try {
-                    const res = await defaultReq.get(requests.getToken)
+                    const res = await api.get(requests.getToken)
 
                     if (res.data.access_token && (requireAdmin ? res.data.user.role === 'admin' : true)) {
                         setIsVerified(true)
